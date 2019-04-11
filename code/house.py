@@ -11,4 +11,10 @@ class House():
         self.x = x
         self.y = y
         self.max_output = max_output
-        self.connections = {}
+        self.connected_battery = None
+
+    def __str__(self):
+        return "House " + str(self.id) + " Connected to battery " + str(self.connected_battery)
+
+    def __repr__(self):
+        return "House " + str(self.id) + " Connected to battery " + str(self.connected_battery)

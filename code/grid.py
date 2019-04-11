@@ -15,7 +15,6 @@ class Grid():
         """
         self.houses = self.load_houses(f"{district}_huizen.csv")
         self.batteries = self.load_batteries(f"{district}_batterijen.txt")
-        #self.cables =
 
     def load_houses(self, filename):
         """
@@ -44,7 +43,7 @@ class Grid():
             house = House(id, x, y, max_output)
             houses[id] = house
 
-        print(houses)
+        #print(houses)
         return houses
 
     def load_batteries(self, filename):
@@ -71,7 +70,7 @@ class Grid():
             battery = Battery(id, x, y, capacity)
             batteries[id] = battery
 
-        print(batteries)
+        return batteries
 
 if __name__ == "__main__":
     # makes sure proper command line argument from user
@@ -79,4 +78,59 @@ if __name__ == "__main__":
         print("Usage: grid.py district")
         exit(1)
 
-    Grid(argv[1])
+    grid = Grid(argv[1])
+
+    for i in range(150):
+        if grid.batteries[0].capacity >= grid.houses[i].max_output:
+            grid.batteries[0].add_connection(grid.houses[i])
+        elif grid.batteries[1].capacity >= grid.houses[i].max_output:
+            grid.batteries[1].add_connection(grid.houses[i])
+        elif grid.batteries[2].capacity >= grid.houses[i].max_output:
+            grid.batteries[2].add_connection(grid.houses[i])
+        elif grid.batteries[3].capacity >= grid.houses[i].max_output:
+            grid.batteries[3].add_connection(grid.houses[i])
+        elif grid.batteries[4].capacity >= grid.houses[i].max_output:
+            grid.batteries[4].add_connection(grid.houses[i])
+        else:
+            print("No more batteries left")
+
+    print(grid.batteries[0].get_connections())
+    print(grid.batteries[1].get_connections())
+    print(grid.batteries[2].get_connections())
+    print(grid.batteries[3].get_connections())
+    print(grid.batteries[4].get_connections())
+
+
+
+    # grid.batteries[0].add_connection(grid.houses[0])
+    # #print(grid.batteries[0].get_connections())
+    # grid.batteries[0].add_connection(grid.houses[1])
+    # grid.batteries[0].add_connection(grid.houses[2])
+    # grid.batteries[0].add_connection(grid.houses[3])
+    # grid.batteries[0].add_connection(grid.houses[4])
+    # grid.batteries[0].add_connection(grid.houses[5])
+    # grid.batteries[0].add_connection(grid.houses[6])
+    # grid.batteries[0].add_connection(grid.houses[7])
+    # grid.batteries[0].add_connection(grid.houses[8])
+    # grid.batteries[0].add_connection(grid.houses[9])
+    # grid.batteries[0].add_connection(grid.houses[10])
+    # grid.batteries[0].add_connection(grid.houses[11])
+    # grid.batteries[0].add_connection(grid.houses[12])
+    # grid.batteries[0].add_connection(grid.houses[13])
+    # grid.batteries[0].add_connection(grid.houses[14])
+    # grid.batteries[0].add_connection(grid.houses[15])
+    # grid.batteries[0].add_connection(grid.houses[16])
+    # grid.batteries[0].add_connection(grid.houses[17])
+    # grid.batteries[0].add_connection(grid.houses[18])
+    # grid.batteries[0].add_connection(grid.houses[19])
+    # grid.batteries[0].add_connection(grid.houses[20])
+    # grid.batteries[0].add_connection(grid.houses[21])
+    # grid.batteries[0].add_connection(grid.houses[22])
+    # grid.batteries[0].add_connection(grid.houses[23])
+    # grid.batteries[0].add_connection(grid.houses[24])
+    # grid.batteries[0].add_connection(grid.houses[25])
+    # grid.batteries[0].add_connection(grid.houses[26])
+    # grid.batteries[0].add_connection(grid.houses[27])
+    # grid.batteries[0].add_connection(grid.houses[28])
+    # grid.batteries[0].add_connection(grid.houses[29])
+    # print(grid.batteries[0].get_connections())
