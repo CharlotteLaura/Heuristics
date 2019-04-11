@@ -1,4 +1,7 @@
 from sys import argv
+from battery import Battery
+from house import House
+
 
 class Grid():
     """
@@ -10,8 +13,8 @@ class Grid():
         """
         Create rooms and items for the appropriate 'game' version.
         """
-        self.houses = self.load_rooms(f"{district}_huizen.csv")
-        self.batteries = self.load_items(f"{district}_batterijen.txt")
+        self.houses = self.load_houses(f"{district}_huizen.csv")
+        self.batteries = self.load_batteries(f"{district}_batterijen.txt")
         #self.cables =
 
     def load_houses(self, filename):
@@ -30,17 +33,18 @@ class Grid():
         # Create house objects for each set of data just parsed.
         houses = {}
         id_nr = 0
-        for house_data in houses_data:
+        for house in houses_data:
             id = id_nr
             house.insert(0, id)
-            x = int(house_data[1]
-            y = int(house_data[2]
-            max_output = float(house_data[3])
+            x = int(house[1])
+            y = int(house[2])
+            max_output = float(house[3])
             id_nr += 1
             # initialize a house object and put it in a dict with id as key
             house = House(id, x, y, max_output)
             houses[id] = house
 
+        print(houses)
         return houses
 
     def load_batteries(self, filename):
@@ -59,16 +63,20 @@ class Grid():
         for battery in battery_data:
             id = id_nr
             battery.insert(0, id)
-            x = int(battery_data[1]
-            y = int(battery_data[2]
-            capacity = float(battery_data[3])
+            x = int(battery[1])
+            y = int(battery[2])
+            capacity = float(battery[3])
             id_nr += 1
             #initialize a house object and put it in a dict with id as key
             battery = Battery(id, x, y, capacity)
             batteries[id] = battery
+
+        print(batteries)
 
 if __name__ == "__main__":
     # makes sure proper command line argument from user
     if len(argv) != 2 or argv[1] not in (["wijk1", "wijk2", "wijk3"]):
         print("Usage: grid.py district")
         exit(1)
+
+    Grid(argv[1])
