@@ -1,4 +1,5 @@
 from sys import argv
+import matplotlib.pyplot as plt
 from battery import Battery
 from house import House
 
@@ -72,6 +73,29 @@ class Grid():
 
         return batteries
 
+
+    def visualize(self):
+        """
+        Visualizes batteries and houses in a scatterplot
+        """
+        x_battery = []
+        y_battery = []
+        for i in range(len(self.batteries)):
+            x_battery.append(self.batteries[i].x)
+            y_battery.append(self.batteries[i].y)
+
+        x_house = []
+        y_house = []
+        for i in range(len(self.houses)):
+            x_house.append(self.houses[i].x)
+            y_house.append(self.houses[i].y)
+
+        plt.scatter(x_battery, y_battery, marker='s', color='red')
+        plt.scatter(x_house, y_house, marker='^', color='blue')
+        plt.grid()
+        plt.show()
+
+
 if __name__ == "__main__":
     # makes sure proper command line argument from user
     if len(argv) != 2 or argv[1] not in (["wijk1", "wijk2", "wijk3"]):
@@ -94,13 +118,13 @@ if __name__ == "__main__":
         else:
             print("No more batteries left")
 
-    print(grid.batteries[0].get_connections())
-    print(grid.batteries[1].get_connections())
-    print(grid.batteries[2].get_connections())
-    print(grid.batteries[3].get_connections())
-    print(grid.batteries[4].get_connections())
+    # print(grid.batteries[0].get_connections())
+    # print(grid.batteries[1].get_connections())
+    # print(grid.batteries[2].get_connections())
+    # print(grid.batteries[3].get_connections())
+    # print(grid.batteries[4].get_connections())
 
-
+    grid.visualize()
 
     # grid.batteries[0].add_connection(grid.houses[0])
     # #print(grid.batteries[0].get_connections())

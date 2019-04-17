@@ -36,4 +36,4 @@ class Battery():
         return "Battery " + str(self.id)
 
     def __repr__(self):
-        return "Battery " + str(self.id)
+        return "Battery " + str(self.id) + " X: " + str(self.x) + " Y: " + str(self.y)
