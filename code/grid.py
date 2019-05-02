@@ -118,11 +118,10 @@ if __name__ == "__main__":
         else:
             print("No more batteries left")
 
-    # print(grid.batteries[0].get_connections())
-    # print(grid.batteries[1].get_connections())
-    # print(grid.batteries[2].get_connections())
-    # print(grid.batteries[3].get_connections())
-    # print(grid.batteries[4].get_connections())
+    for i in grid.batteries:
+        print(f"Battery {i}: ")
+        for connection in grid.batteries[i].get_connections():
+            print(connection)
 
     grid.visualize()
 

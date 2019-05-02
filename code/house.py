@@ -16,5 +16,5 @@ class House():
     def __str__(self):
         return "House " + str(self.id) + " Connected to battery " + str(self.connected_battery)
 
-    # def __repr__(self):
-    #     return "House " + str(self.id) + " Connected to battery " + str(self.connected_battery)
+    def __repr__(self):
+        return "House " + str(self.id) + " Connected to battery " + str(self.connected_battery)
