@@ -90,11 +90,15 @@ class Grid():
 
     def greedy(self):
         manhattan_distance = self.get_manhattan_distance()
+        score = 0
         for key, value in manhattan_distance.items():
             curr_battery = self.batteries[key[0]]
             curr_house = self.houses[key[1]]
             if (curr_battery.reach_capacity == False) and (curr_house.connected_battery is None):
                 curr_battery.add_connection(curr_house)
+                score += value
+        print(score)
+        return score
 
     def visualize(self):
         """
