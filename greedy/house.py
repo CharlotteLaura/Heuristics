@@ -14,7 +14,7 @@ class House():
         self.connected_battery = None
 
     def __str__(self):
-        return "House " + str(self.id) + " Connected to battery " + str(self.connected_battery)
+        return "House " + str(self.id) + " Connected to battery " + str(self.connected_battery) + " Max output: "+ str(self.max_output)
 
     def __repr__(self):
-        return "House " + str(self.id) + " Connected to battery " + str(self.connected_battery)
+        return "House " + str(self.id) + " Connected to battery " + str(self.connected_battery) + " Max output: "+ str(self.max_output)

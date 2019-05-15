@@ -1,5 +1,6 @@
 from house import House
 
+
 class Battery():
     """
     Representation of a battery in smartgrid
@@ -14,7 +15,6 @@ class Battery():
         self.y = y
         self.capacity = capacity
         self.connections = []
-        self.reach_capacity = False
 
     def add_connection(self, house):
         """
@@ -24,9 +24,21 @@ class Battery():
             self.connections.append(house)
             self.capacity = self.capacity - house.max_output
             house.connected_battery = self.id
+        # else:
+        #     print("Battery does not have enough capacity to connect this house")
+        #     self.reach_capacity = True
+
+    def delete_connection(self, house):
+        """
+        Deletes a house to the list of connections
+        """
+        if house in self.connections:
+            print(self.id)
+            self.connections.remove(house)
+            self.capacity += house.max_output
+            house.connected_battery = None
         else:
-            print("Battery does not have enough capacity to connect this house")
-            self.reach_capacity = True
+            print("House cannot be disconnected because it is not connected")
 
     def get_connections(self):
         """
